@@ -37,9 +37,11 @@ void printPayoutTable (unsigned short int n_spots);
 
 
 /**!
-
+ * This function returns the payout scale based on the number of spots in a bet.
+ * @param number of spots
+ * @return a vector with the corresponding payout scale
  */
-int payout (int n_spots); 
+std::vector<float> payout (int n_spots);
 
 /**!
 
