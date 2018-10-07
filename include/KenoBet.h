@@ -9,6 +9,12 @@ class KenoBet {
     public:
         //! Creates an empty Keno bet
         KenoBet() : m_wage(0) {};
+
+        /*! Adds a number to the spots only if the number is not already there.
+            @param spot_ The number we wish to include in the bet.
+            @return T if number chosen is successfully inserted; F otherwise. */
+        bool add_number( number_type spot_ );
+
     private:
         set_of_numbers_type m_spots; // <! The player's bet
         cash_type m_wage;            // <! The player's wage
