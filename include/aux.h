@@ -3,6 +3,7 @@
 
 #include <sstream>
 #include <string>
+#include <vector>
 
 /**!
  * This function converts a string of a number to an actual integer.
@@ -17,5 +18,13 @@ int strToInt (std::string inputStr_);
  * @return the string number's corresponding float
  */
 float strToFloat (std::string inputStr_); 
+
+/**!
+ * This function verifies if a spot is a member of the spots vector.
+ * @param spots the spots vector
+ * @param spot the spot we want to verify if is a member of spots
+ * @return true if the spot is in the spots vector, false otherwise
+ */
+bool member (const std::vector<int> & spots, const int & spot);
 
 #endif

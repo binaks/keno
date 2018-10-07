@@ -15,3 +15,12 @@ float strToFloat (std::string inputStr_) {
 
     return value;
 }
+
+bool member (const std::vector<int> & spots, const int & spot) {
+    for (auto i(0u); i < spots.size(); ++i) {
+        if (spots[i] == spot)
+            return true;
+    }
+    
+    return false;
+}

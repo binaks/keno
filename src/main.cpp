@@ -49,9 +49,25 @@ int main (int argc, char *argv[]) {
     ifs.close();
 
     // validate spots
+    for (auto i(0u); i < spots.size(); ++i) {
         // check if each spot is in the proper range [1,80]
+        if (spots[i] < 1 or spots[i] > 80) {
+            spots.erase(spots.begin()+i);
+            i--;
+        }
         // check if each spot appears only once
+        for (auto j(0u); j < i; ++j) {
+            if (spots[i] == spots[j]) {
+                spots.erase(spots.begin() + i);
+                i--;
+            }
+        }
         // if there are more than 15 spots, validate only the first 15
+        if (i > 14) {
+            spots.erase(spots.begin()+i);
+            i--;
+        }
+    }
 
     // TODO:tests
     std::cout << initialCredit << std::endl;
