@@ -25,6 +25,6 @@ float strToFloat (std::string inputStr_);
  * @param spot the spot we want to verify if is a member of spots
  * @return true if the spot is in the spots vector, false otherwise
  */
-bool member (const std::vector<int> & spots, const int & spot);
+bool member (const std::vector<unsigned short int> & spots, const int & spot);
 
 #endif
