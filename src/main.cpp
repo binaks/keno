@@ -77,7 +77,7 @@ int main (int argc, char *argv[]) {
 
     std::cout << ">>> Bet successfully read!" << std::endl;
     std::cout << "    You are going to wage a total of $" << initialCredit << " dollars." << std::endl;
-    std::cout << "    Going for a total of " << numberOfRounds << " rounds, waging " << initialCredit / numberOfRounds << " per round." << std::endl;
+    std::cout << "    Going for a total of " << numberOfRounds << " rounds, waging $" << initialCredit / numberOfRounds << " per round." << std::endl;
 
     std::cout << std::endl;
 
