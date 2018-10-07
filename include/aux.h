@@ -1,9 +1,11 @@
 #ifndef AUX_H
 #define AUX_H
 
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
+#include <iomanip>
 
 /**!
  * This function converts a string of a number to an actual integer.
@@ -26,5 +28,22 @@ float strToFloat (std::string inputStr_);
  * @return true if the spot is in the spots vector, false otherwise
  */
 bool member (const std::vector<unsigned short int> & spots, const int & spot);
+
+/**!
+ * This function prints the payout table accordingly to how many spots were bet.
+ * @param n_spots the number of spots that were bet
+ */
+void printPayoutTable (unsigned short int n_spots);
+
+
+/**!
+
+ */
+int payout (int n_spots); 
+
+/**!
+
+ */
+std::vector<unsigned short int> generateHits();
 
 #endif

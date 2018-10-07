@@ -75,18 +75,35 @@ int main (int argc, char *argv[]) {
         }
     }
 
+    // credits for round
+    float credits4round = initialCredit / numberOfRounds;
+
+    // attributing values to the kenobet
+    KenoBet kenobet;
+    kenobet.set_wage(initialCredit);
+    
+    for (auto i(0u); i < spots.size(); ++i) {
+        kenobet.add_number(spots[i]);
+    }
+
+    // starting to play
     std::cout << ">>> Bet successfully read!" << std::endl;
-    std::cout << "    You are going to wage a total of $" << initialCredit << " dollars." << std::endl;
-    std::cout << "    Going for a total of " << numberOfRounds << " rounds, waging $" << initialCredit / numberOfRounds << " per round." << std::endl;
+    std::cout << "    You are going to wage a total of $" << kenobet.get_wage() << " dollars." << std::endl;
+    std::cout << "    Going for a total of " << numberOfRounds << " rounds, waging $" << credits4round << " per round." << std::endl;
 
     std::cout << std::endl;
 
-    std::cout << "    Your bet has " << spots.size() << " numbers. They are: [ ";
+    std::cout << "    Your bet has " << kenobet.size() << " numbers. They are: [ ";
 
-    for (auto i(0u); i < spots.size(); ++i) {
-        std::cout << spots[i] << " ";
+    for (auto i(0u); i < kenobet.size(); ++i) {
+        std::cout << kenobet.get_spots()[i] << " ";
     }
     std::cout << "]" << std::endl;
+
+    std::cout << std::endl;
+
+    printPayoutTable (spots.size());
+
 
     return 0;
 }
