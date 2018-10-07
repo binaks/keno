@@ -3,8 +3,10 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 #include "../include/aux.h"
+#include "../include/KenoBet.h"
 
 int main (int argc, char *argv[]) {
 
@@ -12,6 +14,10 @@ int main (int argc, char *argv[]) {
         std::cout << "Please provide a file name." << std::endl;
 
     std::string bet = argv[1];
+
+    std::cout << ">>> Preparing to read bet file [" << bet << "], please wait..." << std::endl;
+
+    std::cout << std::setw(40) << std::setfill('-') << "" << std::endl;
 
     float initialCredit = 0;
     int numberOfRounds = 0;
@@ -69,14 +75,18 @@ int main (int argc, char *argv[]) {
         }
     }
 
-    // TODO:tests
-    std::cout << initialCredit << std::endl;
-    std::cout << numberOfRounds << std::endl;
+    std::cout << ">>> Bet successfully read!" << std::endl;
+    std::cout << "    You are going to wage a total of $" << initialCredit << " dollars." << std::endl;
+    std::cout << "    Going for a total of " << numberOfRounds << " rounds, waging " << initialCredit / numberOfRounds << " per round." << std::endl;
+
+    std::cout << std::endl;
+
+    std::cout << "    Your bet has " << spots.size() << " numbers. They are: [ ";
 
     for (auto i(0u); i < spots.size(); ++i) {
         std::cout << spots[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << "]" << std::endl;
 
     return 0;
 }
