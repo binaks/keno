@@ -17,7 +17,7 @@ int main (int argc, char *argv[]) {
 
     std::cout << ">>> Preparing to read bet file [" << bet << "], please wait..." << std::endl;
 
-    std::cout << std::setw(40) << std::setfill('-') << "" << std::endl;
+    std::cout << std::setw(50) << std::setfill('-') << "" << std::endl;
 
     float initialCredit = 0;
     int numberOfRounds = 0;
@@ -47,7 +47,6 @@ int main (int argc, char *argv[]) {
             spots.push_back(strToInt (spot));
             spot = "";
         }
-
     }
 
     spots.push_back(strToInt (spot));
@@ -99,11 +98,60 @@ int main (int argc, char *argv[]) {
         std::cout << kenobet.get_spots()[i] << " ";
     }
     std::cout << "]" << std::endl;
+    std::cout << std::endl;
+
+    // print payout table
+    printPayoutTable (kenobet.get_spots().size());
+
+    // play rounds
+    for (auto i(0); i < numberOfRounds; ++i) {
+        std::cout << std::setw(9) << std::setfill(' ') << "";
+        std::cout << std::setw(50) << std::setfill('-') << "" << std::endl;
+
+        std::cout << std::setw(9) << std::setfill(' ') << "";
+        std::cout << "This is round #" << i + 1 << " of " << numberOfRounds << ", and your wage is $" << credits4round << ". Good luck!" << std::endl;
+
+        std::vector<unsigned short int> hits = generateHits();
+
+        // print hits
+        std::cout << std::setw(9) << std::setfill(' ') << "";
+        std::cout << "The hits are: [ ";
+        for (auto j(0u); j < hits.size(); ++j) {
+            std::cout << hits[j] << " ";
+        }
+        std::cout << "]" << std::endl;
+        
+        std::cout << std::endl;
+
+        std::cout << std::setw(9) << std::setfill(' ') << "";
+        std::cout << "You hit the following number(s) [ ";
+
+        std::vector<unsigned short int> result = intersect(hits, kenobet.get_spots());
+
+        for (auto j(0u); j < result.size(); ++j) {
+            std::cout << result[j] << " ";
+        }
+
+        std::cout << "], a total of " << result.size() << " out of " << kenobet.get_spots().size() << "." << std::endl;
+
+    }
+
+    // end of rounds
+    std::cout << ">>> End of rounds!" << std::endl;
+    std::cout << std::setw(50) << std::setfill('-') << "" << std::endl;
 
     std::cout << std::endl;
 
-    printPayoutTable (spots.size());
+    // summary
+    std::cout << "===== SUMMARY =====" << std::endl;
+    std::cout << ">>> You spent in this game a total of $" << initialCredit << " dollars." << std::endl;
 
+    if (kenobet.get_wage() > initialCredit)
+        std::cout << ">>> Hooray, you won $" << kenobet.get_wage() - initialCredit << " dollars. See you next time! ;-)" << std::endl;
+    else
+        std::cout << ">>> You lost $" << initialCredit - kenobet.get_wage() << " dollars. Better luck next time :-(" << std::endl;
+    
+    std::cout << "You are leaving the Keno table with $" << kenobet.get_wage() << " dollars." << std::endl;
 
     return 0;
 }

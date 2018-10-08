@@ -44,8 +44,17 @@ void printPayoutTable (unsigned short int n_spots);
 std::vector<float> payout (int n_spots);
 
 /**!
-
+ * This function randomly generates hits and returns them in a vector.
+ * @return a vector with the hits
  */
 std::vector<unsigned short int> generateHits();
+
+/**!
+ * This function returns the intersection between two vectors
+ * @param spots the vector with the spots
+ * @param hits the vector with the hits
+ * @return a vector with their intersection
+ */
+std::vector<unsigned short int> intersect (std::vector <unsigned short int> spots, std::vector <unsigned short int> hits);
 
 #endif

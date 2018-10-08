@@ -1,4 +1,5 @@
 #include "../include/aux.h"
+#include <random>
 
 int strToInt (std::string inputStr_) {
     std::istringstream iss (inputStr_);
@@ -92,10 +93,34 @@ void printPayoutTable (unsigned short int n_spots) {
     }
 
     std::cout << std::endl;
-
-    std::cout << std::setw(9) << std::setfill(' ') << "";
-    std::cout << std::setw(40) << std::setfill('-') << "" << std::endl;
 }
 
-//std::vector<unsigned short int> generateHits() {
-//}
+std::vector<unsigned short int> generateHits() {
+    std::vector<unsigned short int> hits;
+
+    for (auto i(0); i < 20; ++i) {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dist(1,80);
+
+        unsigned short int hit = dist(gen);
+
+        if (not member (hits, hit))
+            hits.push_back(hit);
+        else i--;
+    }
+
+    return hits;
+}
+
+std::vector<unsigned short int> intersect (std::vector <unsigned short int> spots, std::vector <unsigned short int> hits) {
+    std::vector<unsigned short int> intersect;
+    
+    for (auto i(0u); i < spots.size(); ++i) {
+        if (member (hits, spots[i])) {
+            intersect.push_back(spots[i]);
+        }
+    }
+    
+    return intersect;
+}
