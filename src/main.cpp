@@ -113,6 +113,8 @@ int main (int argc, char *argv[]) {
 
         std::vector<unsigned short int> hits = generateHits();
 
+        kenobet.set_wage(kenobet.get_wage() - credits4round);
+
         // print hits
         std::cout << std::setw(9) << std::setfill(' ') << "";
         std::cout << "The hits are: [ ";
@@ -133,6 +135,15 @@ int main (int argc, char *argv[]) {
         }
 
         std::cout << "], a total of " << result.size() << " out of " << kenobet.get_spots().size() << "." << std::endl;
+
+        std::cout << std::setw(9) << std::setfill(' ') << "";
+
+        std::cout << "Payout rate is " << payout(kenobet.get_spots().size())[result.size()] << ", thus you came out with: $" << credits4round * payout(kenobet.get_spots().size())[result.size()] << "." << std::endl;
+
+        kenobet.set_wage(kenobet.get_wage() + (credits4round * payout(kenobet.get_spots().size())[result.size()]));
+
+        std::cout << std::setw(9) << std::setfill(' ') << "";
+        std::cout << "Your net balance so far is: $" << kenobet.get_wage() << " dollars." << std::endl;
 
     }
 
