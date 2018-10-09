@@ -130,21 +130,22 @@ std::vector<unsigned short int> intersect (std::vector<unsigned short int> spots
     return intersect;
 }
 
-void sort (std::vector<unsigned short int> & v) {
-    isort (v, v.size() - 1);
+void sort (std::vector<unsigned short int> &v) {
+    int n = v.size() - 1;
+    isort (v, n);
 }
 
 void isort (std::vector<unsigned short int> &v, int n) {
-	for (auto i = 1; i < n; i++) {
-		auto j = i;
-		auto key = v.at(i);
+	for (auto i = 1; i <= n; i++) {
+		auto j = i - 1;
+		auto key = v[i];
 
-		while (j > 0 && v.at(j) > key) {
-			swap (v.at(j+1), v.at(j));
+		while (j >= 0 && v[j] > key) {
+			swap (v[j+1], v[j]);
 			j--;
 		}
 
-		key = v.at(i+1);
+		key = v[i+1];
     }
 }
 
