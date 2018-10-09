@@ -74,6 +74,7 @@ int main (int argc, char *argv[]) {
         }
     }
 
+    // sorts spots
     sort(spots);
 
     // credits for round
@@ -161,8 +162,10 @@ int main (int argc, char *argv[]) {
 
     if (kenobet.get_wage() > initialCredit)
         std::cout << ">>> Hooray, you won $" << kenobet.get_wage() - initialCredit << " dollars. See you next time! ;-)" << std::endl;
+    else if (kenobet.get_wage() < initialCredit)
+        std::cout << ">>> Shoot, you lost $" << initialCredit - kenobet.get_wage() << " dollars. Better luck next time :-(" << std::endl;
     else
-        std::cout << ">>> You lost $" << initialCredit - kenobet.get_wage() << " dollars. Better luck next time :-(" << std::endl;
+        std::cout << ">>> You lost the same amount of money you won ¯\\_(ツ)_/¯" << std::endl;
     
     std::cout << "You are leaving the Keno table with $" << kenobet.get_wage() << " dollars." << std::endl;
 

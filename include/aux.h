@@ -64,12 +64,12 @@ std::vector<unsigned short int> intersect (std::vector <unsigned short int> spot
 void sort (std::vector <unsigned short int> & v);
 
 /**!
- * This is a quicksort function.
+ * This is an insertion sort function.
  * @param v the address of the vector that will be sorted
- * @param left the leftmost element of the vector
- * @param right the rightmost element of the vector
+ * @param first the first element of the vector
+ * @param last the last element of the vector
  */
-void qsort (std::vector <unsigned short int> &v, unsigned short int left, unsigned short int right);
+void isort (std::vector<unsigned short int> &v, int n); 
 
 /**!
  * This function swaps the values of two variables.
@@ -77,13 +77,5 @@ void qsort (std::vector <unsigned short int> &v, unsigned short int left, unsign
  * @param y the address of the second variable
  */
 inline void swap (unsigned short int & x, unsigned short int & y);
-
-/**!
- * This is an aux function for the quicksort one.
- * @param v the address of the vector that will be sorted
- * @param left the leftmost element of the vector
- * @param right the rightmost element of the vector
- */
-int partition (std::vector<unsigned short int> & v, unsigned short int left, unsigned short int right) ;
 
 #endif

@@ -131,36 +131,21 @@ std::vector<unsigned short int> intersect (std::vector<unsigned short int> spots
 }
 
 void sort (std::vector<unsigned short int> & v) {
-    return qsort (v, v[0], v[(v.size() - 1)]);
+    isort (v, v.size() - 1);
 }
 
-void qsort (std::vector<unsigned short int> &v, unsigned short int left, unsigned short int right) {
-    if (left < right) {
-        unsigned short int p = partition (v, left, right);
-        
-        qsort (v, left, p - 1);
-        qsort (v, p + 1, right);
+void isort (std::vector<unsigned short int> &v, int n) {
+	for (auto i = 1; i < n; i++) {
+		auto j = i;
+		auto key = v.at(i);
+
+		while (j > 0 && v.at(j) > key) {
+			swap (v.at(j+1), v.at(j));
+			j--;
+		}
+
+		key = v.at(i+1);
     }
-}
-
-int partition (std::vector<unsigned short int> & v, unsigned short int left, unsigned short int right) {
-    unsigned short int pivot = v[right];
-
-    unsigned short int i = left;
-    unsigned short int j = right - 1;
-
-    while (i <= j) {
-        while (v[i] < pivot && i <= j) i++;
-        while (v[j] > pivot && i <= j) j--;
-
-        if (i <= j) {
-            swap(v[i],v[j]);  
-        }
-    }
-
-    swap(v[i],v[right]);
-
-    return i;
 }
 
 inline void swap (unsigned short int & x, unsigned short int & y) {
