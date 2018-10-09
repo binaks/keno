@@ -1,3 +1,5 @@
+// Authors: Bianca Rodrigues Cesarino & Gustavo Batista de Araújo Gorgônio
+
 #ifndef AUX_H
 #define AUX_H
 

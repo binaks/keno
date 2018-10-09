@@ -1,3 +1,5 @@
+// Authors: Bianca Rodrigues Cesarino & Gustavo Batista de Araújo Gorgônio
+
 #include "../include/aux.h"
 #include <random>
 #include <iterator>

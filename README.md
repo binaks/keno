@@ -22,3 +22,7 @@ To start playing, run
 ./keno /data/(NAME-OF-BET-FILE)
 ```
 replacing (NAME-OF-BET-FILE) with the name of the file you created.
+
+## Made by
+* Bianca Rodrigues Cesarino
+* Gustavo Batista de Araújo Gorgônio

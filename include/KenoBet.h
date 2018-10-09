@@ -1,3 +1,5 @@
+// Authors: Bianca Rodrigues Cesarino & Gustavo Batista de Araújo Gorgônio
+
 #ifndef KENO_BET_H
 #define KENO_BET_H
 
