@@ -21,7 +21,7 @@ int main (int argc, char *argv[]) {
 
     float initialCredit = 0;
     int numberOfRounds = 0;
-    std::vector<int> spots; // numbers the player picked
+    std::vector<unsigned short int> spots; // numbers the player picked
     std::string spot = ""; // each number, but in string format
 
     std::string line;
@@ -73,6 +73,8 @@ int main (int argc, char *argv[]) {
             i--;
         }
     }
+
+    sort(spots);
 
     // credits for round
     float credits4round = initialCredit / numberOfRounds;

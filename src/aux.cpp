@@ -1,5 +1,6 @@
 #include "../include/aux.h"
 #include <random>
+#include <iterator>
 
 int strToInt (std::string inputStr_) {
     std::istringstream iss (inputStr_);
@@ -110,10 +111,12 @@ std::vector<unsigned short int> generateHits() {
         else i--;
     }
 
+    sort(hits);
+
     return hits;
 }
 
-std::vector<unsigned short int> intersect (std::vector <unsigned short int> spots, std::vector <unsigned short int> hits) {
+std::vector<unsigned short int> intersect (std::vector<unsigned short int> spots, std::vector<unsigned short int> hits) {
     std::vector<unsigned short int> intersect;
     
     for (auto i(0u); i < spots.size(); ++i) {
@@ -122,5 +125,46 @@ std::vector<unsigned short int> intersect (std::vector <unsigned short int> spot
         }
     }
     
+    sort(intersect);
+
     return intersect;
+}
+
+void sort (std::vector<unsigned short int> & v) {
+    return qsort (v, v[0], v[(v.size() - 1)]);
+}
+
+void qsort (std::vector<unsigned short int> &v, unsigned short int left, unsigned short int right) {
+    if (left < right) {
+        unsigned short int p = partition (v, left, right);
+        
+        qsort (v, left, p - 1);
+        qsort (v, p + 1, right);
+    }
+}
+
+int partition (std::vector<unsigned short int> & v, unsigned short int left, unsigned short int right) {
+    unsigned short int pivot = v[right];
+
+    unsigned short int i = left;
+    unsigned short int j = right - 1;
+
+    while (i <= j) {
+        while (v[i] < pivot && i <= j) i++;
+        while (v[j] > pivot && i <= j) j--;
+
+        if (i <= j) {
+            swap(v[i],v[j]);  
+        }
+    }
+
+    swap(v[i],v[right]);
+
+    return i;
+}
+
+inline void swap (unsigned short int & x, unsigned short int & y) {
+    unsigned short int tmp = x;
+    x = y;
+    y = tmp;
 }
